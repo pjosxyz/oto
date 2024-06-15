@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Button } from "@/components/ui/button";
+import { HomeIcon } from "lucide-react";
+import MobileNavItem from "@/components/mobile-nav/mobile-nav-item";
+import MobileNav from "@/components/mobile-nav/mobile-nav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="font-sans bg-neutral-950">
+        <nav className="p-4 bg-neutral-900 border-b border-neutral-700 flex justify-between items-center">
+          <div className="container">
+            <svg
+              width="59"
+              height="20"
+              viewBox="0 0 59 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.30656 19.5676C14.4464 19.5676 18.6131 15.284 18.6131 10C18.6131 4.71598 14.4464 0.432428 9.30656 0.432428C4.16669 0.432428 0 4.71598 0 10C0 15.284 4.16669 19.5676 9.30656 19.5676ZM49.6934 19.5676C54.8333 19.5676 59 15.284 59 10C59 4.71598 54.8333 0.432428 49.6934 0.432428C44.5536 0.432428 40.3869 4.71598 40.3869 10C40.3869 15.284 44.5536 19.5676 49.6934 19.5676ZM25.9881 7.2922H20.7202V0.793468H38.2798V7.2922H33.0119V19.36H25.9881V7.2922Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <Button size={"sm"} variant={"primary"}>
+            Log in
+          </Button>
+        </nav>
+        {children}
+        <MobileNav />
+      </body>
     </html>
   );
 }
